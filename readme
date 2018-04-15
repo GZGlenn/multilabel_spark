@@ -1,0 +1,19 @@
+说明文档：这是基于spark的多标签分类demo。采用的模型是AdaboostMH，弱分类器是节点分割、lr或svm；采用代码是scala
+
+2. 本地测试代码，需要自己导入本地的spark包，然后run src/scala/TestModelUtil
+
+3. 实际运行：src/scala/main/TrainModel, src/scala/main/TestModel；需要组pom.xml下增加spark依赖
+
+4. 输入：
+
+    a. TrainModel，输入 libsvm_path 是hdfs路径的libsvm格式训练数据；feature_size 特征维度；class_num 分类数目；model_path 模型hdfs保存路径；
+    model_type 模型类别，有cut、lr、svm；model_num 弱分类器个数；sample_ratio 数据采样率
+
+    b. TestModel, data_path  是hdfs路径的libsvm格式测试数据；model_path 模型hdfs路径；predict_path 预测结果路径；
+    feature_size 特征维度；class_num 分类数目；model_type 模型类别，有cut、lr、svm；sample_ratio 数据采样率
+
+5. 代码借鉴：https://github.com/BaiGang/spark_multiboost
+
+
+6. 效果：总体而言模型能完成多标签分类；但是模型比较旧，而且训练速度较慢
+
